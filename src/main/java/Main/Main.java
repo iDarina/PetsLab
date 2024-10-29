@@ -27,8 +27,9 @@ public class Main {
 
         }
 
-            Collections.sort(nameOfPet);
+            //Collections.sort(nameOfPet);
             Collections.sort(typeOfPet);
+
 
 
 
