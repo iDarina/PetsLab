@@ -1,7 +1,6 @@
 package Main;
 
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,41 +10,47 @@ public class Main {
         int numOfPets = scan.nextInt();
         scan.nextLine();
 
-        String[] typeOfPet = new String[4];
-        String[] nameOfPet = new String[4];
+        List<String> typeOfPet = new ArrayList<>();
+        List<String> nameOfPet = new ArrayList<>();
+
+//        String[] typeOfPet = new String[4];
+//        String[] nameOfPet = new String[4];
 
         int i;
             for(i = 0; i < numOfPets; i++){
                 System.out.println("What type of pet is pet " + (i+1) + "?");
-                typeOfPet[i] = scan.nextLine();
+                typeOfPet.add(i, scan.nextLine());
 
                 System.out.println("What is the name of pet " + (i+1) + "?");
-                nameOfPet[i] = scan.nextLine();
+                nameOfPet.add(i, scan.nextLine());
 
 
         }
+
+            Collections.sort(nameOfPet);
+            Collections.sort(typeOfPet);
 
 
 
         System.out.println("You have the following pets:");
         for(i = 0; i < numOfPets; i++){
-            System.out.print("Pet " + (i+1) + ": " + typeOfPet[i] + " named " + nameOfPet[i] + " says ");
+            System.out.print("Pet " + (i+1) + ": " + typeOfPet.get(i) + " named " + nameOfPet.get(i) + " says ");
 
-            switch (typeOfPet[i].toLowerCase()) {
+            switch (typeOfPet.get(i).toLowerCase()) {
                 case "dog":
-                    Dog dog = new Dog(nameOfPet[i]);
+                    Dog dog = new Dog(nameOfPet.get(i));
                     System.out.println(dog.makeSound());
                     break;
                 case "cat":
-                    Cat cat = new Cat(nameOfPet[i]);
+                    Cat cat = new Cat(nameOfPet.get(i));
                     System.out.println(cat.makeSound());
                     break;
                 case "hamster":
-                    Hamster hamster = new Hamster(nameOfPet[i]);
+                    Hamster hamster = new Hamster(nameOfPet.get(i));
                     System.out.println(hamster.makeSound());
                     break;
                 case "bird":
-                    Bird bird = new Bird(nameOfPet[i]);
+                    Bird bird = new Bird(nameOfPet.get(i));
                     System.out.println(bird.makeSound());
                     break;
                 default:
